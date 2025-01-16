@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("maven-publish")
 }
 
 android {
@@ -40,4 +41,28 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+            from(components["release"])
+
+            groupId = "com.github.billionlabs"
+            artifactId = "vfe-library"
+            version = "0.1.0" // This is a pre-release version
+        }
+    }
+
+    repositories {
+        maven {
+            // Use GitHub Packages as the repository
+            name = "GithubPackages"
+            url = uri("https://maven.pkg.github.com/billionlabs/Vibrometric-Force-Estimation-Library") // Replace with GitHub organization/repo
+            credentials {
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_USERNAME")
+                password = project.findProperty("gpr.token") as String? ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
 }

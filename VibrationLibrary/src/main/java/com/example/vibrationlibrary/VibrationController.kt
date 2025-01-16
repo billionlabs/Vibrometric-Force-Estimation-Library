@@ -1,4 +1,4 @@
-package com.example.dyna
+package com.example.vibrationlibrary
 
 import android.content.Context
 import android.os.VibrationEffect

@@ -46,7 +46,7 @@ dependencies {
 publishing {
     publications {
         create<MavenPublication>("release") {
-            from(components["release"])
+            from(components.findByName("release"))
 
             groupId = "com.github.billionlabs"
             artifactId = "vfe-library"

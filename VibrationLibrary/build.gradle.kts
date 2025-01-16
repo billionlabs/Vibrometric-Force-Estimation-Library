@@ -50,7 +50,7 @@ publishing {
 
             groupId = "com.github.billionlabs"
             artifactId = "vfe-library"
-            version = "0.1.0" // This is a pre-release version
+            version = "0.1.1" // This is a pre-release version
         }
     }
 
